@@ -3,6 +3,7 @@ import { useAppSelector } from '../hooks/reduxHooks';
 import { Link } from 'react-router-dom';
 import Chart from '../components/Chart';
 import { useState } from 'react';
+import { max2d } from '../utils/helper';
 
 const Result = () => {
   const [isChart, setIsChart] = useState(false);
@@ -12,17 +13,6 @@ const Result = () => {
   const img = useAppSelector((state) => {
     return state.data.image;
   });
-
-  const max2d = (arr) => {
-    const obj = { name: arr[0][0], val: arr[0][1] };
-    arr.map((item) => {
-      if (item[1] > obj.val) {
-        obj.val = item[1];
-        obj.name = item[0];
-      }
-    });
-    return obj;
-  };
 
   const preds2 = max2d(preds);
 
@@ -34,7 +24,7 @@ const Result = () => {
       {!isChart && (
         <div className='border-cyan-600 border-2 rounded-xl bg-indigo-50 dark:bg-[#020e28] grid justify-center justify-items-center h-full mx-36 xl:mx-[32rem] p-0'>
           <Swithcher />
-          <h1 className='-mt-20 text-6xl font-semibold dark:text-gray-200'>
+          <h1 className='-mt-20 mb-20 text-6xl font-semibold dark:text-gray-200'>
             Results
           </h1>
 
@@ -68,7 +58,7 @@ const Result = () => {
           </div>
         </div>
       )}
-      {isChart && <Chart setIsChart={setIsChart} />}
+      {isChart && <Chart setIsChart={setIsChart} obj={preds2} />}
     </>
   );
 };

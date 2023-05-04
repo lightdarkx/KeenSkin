@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { useAppDispatch } from '../hooks/reduxHooks';
 import { dataActions } from '../store/data-slice';
 import Swithcher from '../components/Switcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -68,10 +68,10 @@ function Home() {
   return (
     <div className='border-cyan-600 border-2 rounded-xl bg-indigo-50 dark:bg-[#020e28] grid justify-center justify-items-center h-full mx-36 xl:mx-[32rem] p-0'>
       <Swithcher />
-      <h1 className='dark:text-gray-100 text-6xl text-center font-semibold '>
-        Keen Skin
+      <h1 className='-mt-16 dark:text-gray-100 text-6xl text-center font-semibold '>
+        KeenSkin
       </h1>
-      <p className='text-2xl text-start dark:text-gray-300'>
+      <p className='-mt-10 mb-4 pt-4 text-2xl text-start dark:text-gray-300'>
         A skin lesion classifier
       </p>
       {!previewUrl && (
@@ -118,12 +118,15 @@ function Home() {
           </button>
         </Link>
       )}
-      <p className='text-center px-5 dark:text-gray-200'>
-        <p className='font-bold uppercase  text-red-700 dark:text-red-400'>
+      <p className='px-5 dark:text-gray-200 text-center'>
+        <p className='pb-5 text-center font-bold uppercase text-xl  text-red-700 dark:text-red-400'>
           Disclaimer:{' '}
         </p>
-        This is a primary test application. Please check with your doctor for
-        more information
+        KeenSkin is designed for informational purposes only and is not intended
+        to replace the advice of a medical professional. This tool provides
+        predictions based on the images provided and should not be used as a
+        substitute for a medical diagnosis. Please consult with a qualified
+        healthcare provider if you have any concerns about your skin health.
       </p>
     </div>
   );
